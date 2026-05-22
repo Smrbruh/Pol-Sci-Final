@@ -144,6 +144,33 @@ html {
   color: #ffffff;
   letter-spacing: -0.01em;
 }
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border, #374151);
+}
+
+.header-name {
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.header-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.5));
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header-ig:hover {
+  color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+}
 
 .header-gh {
   display: inline-flex;
