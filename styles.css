@@ -7,6 +7,25 @@
    CSS Variables / Design Tokens
    ============================================================ */
 :root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --accent: #3b82f6;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border: #374151;
+  --accent: #60a5fa;
+}
+:root {
   /* Color Palette */
   --color-bg:            #0a0b0e;
   --color-bg-2:          #111318;
@@ -110,7 +129,35 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
 
+.header-name {
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.header-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.header-gh:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
