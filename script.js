@@ -67,35 +67,81 @@ function applyTheme(theme) {
   document.body.setAttribute('data-theme', theme);
 
   if (theme === 'light') {
-    document.body.style.setProperty('--color-bg',             '#f4f5f8');
-    document.body.style.setProperty('--color-bg-2',           '#ecedf2');
-    document.body.style.setProperty('--color-bg-3',           '#e4e6ec');
-    document.body.style.setProperty('--color-surface',        'rgba(255,255,255,0.85)');
-    document.body.style.setProperty('--color-surface-raised', 'rgba(255,255,255,0.95)');
-    document.body.style.setProperty('--color-border',         'rgba(0,0,0,0.09)');
-    document.body.style.setProperty('--color-border-subtle',  'rgba(0,0,0,0.05)');
-    document.body.style.setProperty('--color-text-primary',   '#111320');
-    document.body.style.setProperty('--color-text-secondary', '#3a3f5c');
-    document.body.style.setProperty('--color-text-muted',     '#7b82a0');
-    document.body.style.setProperty('--gradient-sidebar',     'linear-gradient(180deg,#ecedf2 0%,#e4e6ec 100%)');
-    document.body.style.setProperty('--gradient-card',        'linear-gradient(145deg,rgba(255,255,255,0.9) 0%,rgba(240,241,248,0.95) 100%)');
-    document.body.style.setProperty('--color-kz',             'rgba(79,195,247,0.06)');
-    themeToggle.innerHTML = '&#9728;'; // sun
+    const s = document.body.style;
+
+    // Core backgrounds
+    s.setProperty('--color-bg',              '#f0f1f6');
+    s.setProperty('--color-bg-2',            '#e8eaf0');
+    s.setProperty('--color-bg-3',            '#dfe1ea');
+    s.setProperty('--color-surface',         'rgba(255,255,255,0.90)');
+    s.setProperty('--color-surface-raised',  'rgba(255,255,255,0.97)');
+
+    // Borders
+    s.setProperty('--color-border',          'rgba(0,0,0,0.10)');
+    s.setProperty('--color-border-subtle',   'rgba(0,0,0,0.06)');
+
+    // Text — must be dark and high-contrast
+    s.setProperty('--color-text-primary',    '#0e1120');
+    s.setProperty('--color-text-secondary',  '#2e3350');
+    s.setProperty('--color-text-muted',      '#6b7299');
+    s.setProperty('--color-text-accent',     '#4a52cc');
+
+    // Accent / brand — keep hue, darken for light bg contrast
+    s.setProperty('--color-accent',          '#4a52cc');
+    s.setProperty('--color-accent-glow',     'rgba(74,82,204,0.14)');
+    s.setProperty('--color-accent-soft',     'rgba(74,82,204,0.09)');
+    s.setProperty('--color-accent-2',        '#0288d1');
+    s.setProperty('--color-accent-2-soft',   'rgba(2,136,209,0.09)');
+
+    // Semantic
+    s.setProperty('--color-highlight',       '#b06000');
+    s.setProperty('--color-highlight-soft',  'rgba(176,96,0,0.09)');
+    s.setProperty('--color-danger',          '#c0392b');
+    s.setProperty('--color-danger-soft',     'rgba(192,57,43,0.09)');
+    s.setProperty('--color-success',         '#1a7a45');
+    s.setProperty('--color-success-soft',    'rgba(26,122,69,0.09)');
+
+    // Kazakhstan box
+    s.setProperty('--color-kz',              'rgba(2,136,209,0.06)');
+    s.setProperty('--color-kz-border',       'rgba(2,136,209,0.22)');
+
+    // Gradients — light versions
+    s.setProperty('--gradient-accent',       'linear-gradient(135deg,#4a52cc 0%,#7c63d4 100%)');
+    s.setProperty('--gradient-brand',        'linear-gradient(135deg,#4a52cc 0%,#0288d1 100%)');
+    s.setProperty('--gradient-header',       'linear-gradient(180deg,#eceef5 0%,#e4e6ee 100%)');
+    s.setProperty('--gradient-card',         'linear-gradient(145deg,rgba(255,255,255,0.95) 0%,rgba(240,242,250,0.98) 100%)');
+    s.setProperty('--gradient-highlight',    'linear-gradient(135deg,#b06000 0%,#c8760a 100%)');
+    s.setProperty('--gradient-success',      'linear-gradient(135deg,#1a7a45 0%,#0288d1 100%)');
+    s.setProperty('--gradient-sidebar',      'linear-gradient(180deg,#e8eaf0 0%,#dfe1ea 100%)');
+
+    // Shadows — softer for light mode
+    s.setProperty('--shadow-sm',             '0 1px 3px rgba(0,0,0,0.10),0 1px 2px rgba(0,0,0,0.07)');
+    s.setProperty('--shadow-md',             '0 4px 16px rgba(0,0,0,0.12),0 2px 6px rgba(0,0,0,0.08)');
+    s.setProperty('--shadow-lg',             '0 12px 40px rgba(0,0,0,0.14),0 4px 12px rgba(0,0,0,0.09)');
+    s.setProperty('--shadow-xl',             '0 24px 64px rgba(0,0,0,0.16),0 8px 24px rgba(0,0,0,0.10)');
+    s.setProperty('--shadow-accent',         '0 0 24px rgba(74,82,204,0.14),0 4px 16px rgba(0,0,0,0.10)');
+    s.setProperty('--shadow-glow',           '0 0 40px rgba(74,82,204,0.10)');
+
+    themeToggle.innerHTML = '&#9728;'; // sun icon
   } else {
-    document.body.style.removeProperty('--color-bg');
-    document.body.style.removeProperty('--color-bg-2');
-    document.body.style.removeProperty('--color-bg-3');
-    document.body.style.removeProperty('--color-surface');
-    document.body.style.removeProperty('--color-surface-raised');
-    document.body.style.removeProperty('--color-border');
-    document.body.style.removeProperty('--color-border-subtle');
-    document.body.style.removeProperty('--color-text-primary');
-    document.body.style.removeProperty('--color-text-secondary');
-    document.body.style.removeProperty('--color-text-muted');
-    document.body.style.removeProperty('--gradient-sidebar');
-    document.body.style.removeProperty('--gradient-card');
-    document.body.style.removeProperty('--color-kz');
-    themeToggle.innerHTML = '&#9790;'; // moon
+    // Remove all overrides — let :root dark defaults take over
+    const props = [
+      '--color-bg','--color-bg-2','--color-bg-3',
+      '--color-surface','--color-surface-raised',
+      '--color-border','--color-border-subtle',
+      '--color-text-primary','--color-text-secondary','--color-text-muted','--color-text-accent',
+      '--color-accent','--color-accent-glow','--color-accent-soft',
+      '--color-accent-2','--color-accent-2-soft',
+      '--color-highlight','--color-highlight-soft',
+      '--color-danger','--color-danger-soft',
+      '--color-success','--color-success-soft',
+      '--color-kz','--color-kz-border',
+      '--gradient-accent','--gradient-brand','--gradient-header',
+      '--gradient-card','--gradient-highlight','--gradient-success','--gradient-sidebar',
+      '--shadow-sm','--shadow-md','--shadow-lg','--shadow-xl','--shadow-accent','--shadow-glow',
+    ];
+    props.forEach(p => document.body.style.removeProperty(p));
+    themeToggle.innerHTML = '&#9790;'; // moon icon
   }
 }
 
